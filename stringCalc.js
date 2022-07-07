@@ -8,18 +8,20 @@ function separation(string) {
     return listeInt;
 }
 
+function addition(liste) {
+    let somme = 0;
+    liste.forEach(number => {
+        somme += number;
+    });
+    return isNaN(somme) ? 0 : somme;
+}
 
 function strCalc(string) {
     if (string === '') {
         return 0;
     }
     let liste = separation(string);
-    let somme = 0;
-    liste.forEach(number => {
-        somme += number;
-    });
-    let retour = isNaN(somme) ? 0 : somme;
-    return retour;
+    return addition(liste);
 }
 
 
