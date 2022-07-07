@@ -30,6 +30,9 @@ function addition(liste) {
             negative = true;
             listeNeg.push(number);
         }
+        if (number >= 1000) {
+            number = 0;
+        }
         somme += number;
     });
     if (negative) {
@@ -46,6 +49,6 @@ function Add(string) {
     return addition(liste);
 }
 
-console.log(Add("//g\n10g-2g5g3g-5"));
+console.log(Add("//g\n10g1002g5g3g5"));
 console.log(Add(""));
 console.log(Add("7,4"));
