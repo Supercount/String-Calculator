@@ -5,25 +5,7 @@ function retraitLimiters(string) {
     for (let i = 1; i < toCut.length; i++) {
         stringToCut += toCut[i];
     }
-    console.log("stringToCut " + stringToCut);
     return stringToCut;
-}
-
-function separation(string) {
-    let separators = changeSeparators(string);
-    let listeStr;
-    console.log(separators);
-    let regex = new RegExp(separators);
-    if (string.match(/^\/\//)) {
-        let stringToCut = retraitLimiters(string);
-        listeStr = stringToCut.split(regex);
-    } else {
-        listeStr = string.split(regex);
-    }
-    let listeInt = listeStr.map(function(value) {
-        return parseInt(value);
-    });
-    return listeInt;
 }
 
 function changeSeparators(string) {
@@ -45,6 +27,22 @@ function changeSeparators(string) {
         newSeparators = "[,\n]";
     }
     return newSeparators;
+}
+
+function separation(string) {
+    let separators = changeSeparators(string);
+    let listeStr;
+    let regex = new RegExp(separators);
+    if (string.match(/^\/\//)) {
+        let stringToCut = retraitLimiters(string);
+        listeStr = stringToCut.split(regex);
+    } else {
+        listeStr = string.split(regex);
+    }
+    let listeInt = listeStr.map(function(value) {
+        return parseInt(value);
+    });
+    return listeInt;
 }
 
 function addition(liste) {
@@ -76,5 +74,5 @@ function Add(string) {
 }
 
 console.log(Add("//[gra][df]\n10gra102gra5df3gra5"));
-console.log(Add(""));
+console.log(Add("84,3\n6"));
 console.log(Add("//fa\n7fa4"));
