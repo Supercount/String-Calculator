@@ -1,8 +1,25 @@
 
+function retraitLimiters(string) {
+    let toCut = string.split('\n');
+    let stringToCut = "";
+    for (let i = 1; i < toCut.length; i++) {
+        stringToCut += toCut[i];
+    }
+    console.log("stringToCut " + stringToCut);
+    return stringToCut;
+}
+
 function separation(string) {
     let separators = changeSeparators(string);
-    let stringToCut = string.slice(3+separators.length); 
-    let listeStr = stringToCut.split(separators);
+    let listeStr;
+    console.log(separators);
+    let regex = new RegExp(separators);
+    if (string.match(/^\/\//)) {
+        let stringToCut = retraitLimiters(string);
+        listeStr = stringToCut.split(regex);
+    } else {
+        listeStr = string.split(regex);
+    }
     let listeInt = listeStr.map(function(value) {
         return parseInt(value);
     });
@@ -11,12 +28,21 @@ function separation(string) {
 
 function changeSeparators(string) {
     let pattern = "^//.*\n";
-    let newSeparators;
+    let newSeparators = "";
     if (string.match(pattern)) {
         let recup = string.match(pattern)[0].slice(2,-1);
-        newSeparators = recup;
+        if (recup.match(/^\[/)) {
+            let list = recup.split('[');
+            list.forEach(value => {
+                let ajout = value.slice(0,-1);
+                newSeparators = newSeparators.concat("|"+ajout);
+            });
+            newSeparators = newSeparators.slice(2);
+        } else {
+            newSeparators = recup;
+        }
     } else {
-        newSeparators = /[,\n]/;
+        newSeparators = "[,\n]";
     }
     return newSeparators;
 }
@@ -49,6 +75,6 @@ function Add(string) {
     return addition(liste);
 }
 
-console.log(Add("//gra\n10gra102gra5gra3gra5"));
+console.log(Add("//[gra][df]\n10gra102gra5df3gra5"));
 console.log(Add(""));
-console.log(Add("7,4"));
+console.log(Add("//fa\n7fa4"));
