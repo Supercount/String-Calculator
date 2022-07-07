@@ -5,9 +5,7 @@ function strCalc(string) {
         return 0;
     }
     let a = string.split(',')[0];
-    console.log("a : " + a);
     let b = string.split(',')[1];
-    console.log("b : " + b);
     if (b == null) {
         return parseInt(a);
     } 
