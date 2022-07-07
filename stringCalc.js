@@ -29,7 +29,7 @@ function addition(liste) {
     return isNaN(somme) ? 0 : somme;
 }
 
-function strCalc(string) {
+function Add(string) {
     if (string === '') {
         return 0;
     }
@@ -37,6 +37,6 @@ function strCalc(string) {
     return addition(liste);
 }
 
-console.log(strCalc("//g\n10g2g5g3"));
-console.log(strCalc(""));
-console.log(strCalc("7,4"));
+console.log(Add("//g\n10g2g5g3"));
+console.log(Add(""));
+console.log(Add("7,4"));
