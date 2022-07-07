@@ -14,7 +14,7 @@ function changeSeparators(string) {
     let newSeparators;
     if (string.match(pattern)) {
         let recup = string.match(pattern)[0].slice(2,-1);
-        newSeparators = recup.split('');
+        newSeparators = recup;
     } else {
         newSeparators = /[,\n]/;
     }
@@ -49,6 +49,6 @@ function Add(string) {
     return addition(liste);
 }
 
-console.log(Add("//g\n10g1002g5g3g5"));
+console.log(Add("//gra\n10gra102gra5gra3gra5"));
 console.log(Add(""));
 console.log(Add("7,4"));
