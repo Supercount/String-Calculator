@@ -22,10 +22,19 @@ function changeSeparators(string) {
 }
 
 function addition(liste) {
+    let negative = false;
+    let listeNeg = [];
     let somme = 0;
     liste.forEach(number => {
+        if (number < 0) {
+            negative = true;
+            listeNeg.push(number);
+        }
         somme += number;
     });
+    if (negative) {
+        throw new Error("negatives not allowed : " + listeNeg);
+    }
     return isNaN(somme) ? 0 : somme;
 }
 
@@ -37,6 +46,6 @@ function Add(string) {
     return addition(liste);
 }
 
-console.log(Add("//g\n10g2g5g3"));
+console.log(Add("//g\n10g-2g5g3g-5"));
 console.log(Add(""));
 console.log(Add("7,4"));
